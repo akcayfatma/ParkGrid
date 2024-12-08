@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "191958698784",
+    "project_id": "parkgrid-a7e26",
+    "storage_bucket": "parkgrid-a7e26.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191958698784:android:1b2335905e4af673a82545",
+        "android_client_info": {
+          "package_name": "com.example.firstflutterprojectkonumu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtmZ-beejl-IBKy6MANaGr0tTefY6GVII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191958698784:android:d21e6defc866f2fea82545",
+        "android_client_info": {
+          "package_name": "com.example.parkgrid_y"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtmZ-beejl-IBKy6MANaGr0tTefY6GVII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
