@@ -1,15 +1,16 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-//import 'package:parkgrid_y/temaBilesenleri/repository/common_firebase_storage.dart';
+import 'package:parkgrid_y/temaBilesenleri/temaBilesenleri_firebase_storage.dart';
 import 'package:parkgrid_y/temaBilesenleri/sizes.dart';
 import 'package:parkgrid_y/features/profile/controller/profile_controller.dart';
+import 'package:parkgrid_y/features/profile/repository/profile_repository.dart';
 import 'package:parkgrid_y/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-//import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
-//import 'package:parkgrid_y/temaBilesenleri/utils.dart';
+import 'package:parkgrid_y/temaBilesenleri/utils.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key, required this.currentUser});
@@ -23,7 +24,10 @@ class _EditProfileState extends State<EditProfile> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _surnameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _fuelTypeController = TextEditingController();
   XFile? _image;
+String? selectedFuelType; // Seçilen yakıt türü
+List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
 
   void selectImage() async {
     _image = await pickImageFromGallery();
@@ -68,7 +72,7 @@ class _EditProfileState extends State<EditProfile> {
                 child: GestureDetector(
                   onTap: () => selectImage(),
                   child: CircleAvatar(
-                    backgroundColor: profilePhotoCircleColor,
+                    backgroundColor: butonRengi,
                     radius: 70,
                     backgroundImage: _image != null
                         ? FileImage(File(_image!.path)) as ImageProvider
@@ -98,62 +102,44 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ],
               ),
-              InputField(
-                controller: _webController,
-                title: 'WEB Site',
-                value: widget.currentUser.web,
-              ),
-              InputField(
-                controller: _descriptionController,
-                title: 'Name',
-                value: widget.currentUser.description,
-              ),
-
 
               InputField(
                 controller: _emailController,
                 title: 'E-Mail',
                 value: widget.currentUser.email,
               ),
-              Row(
-                children: [
-                  Expanded(
-                      child: InputField(
-                    controller: _githubController,
-                    title: 'GitHub',
-                    value: widget.currentUser.github,
-                  )),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      child: InputField(
-                    controller: _linkedinController,
-                    title: 'LinkedIn',
-                    value: widget.currentUser.linkedin,
-                  ))
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: InputField(
-                      controller: _stackofController,
-                      title: 'Stackoverflow',
-                      value: widget.currentUser.stackof,
+
+              Padding(padding: const EdgeInsets.symmetric(vertical: 5),
+                child: DropdownButtonFormField<String>(
+                  value: selectedFuelType,
+                  items:fuelTypes.map((String fuel){
+                    return DropdownMenuItem<String>(
+                      value: fuel, 
+                      child: Text(fuel), 
+                    );
+                                
+                    }).toList(),
+                    onChanged: (String? newValue){
+                      setState((){
+                        selectedFuelType=newValue;
+                      });
+                    },
+                decoration: InputDecoration(
+                  fillColor: acikYazi,
+                    filled: true,
+                    hintText: " Yakıt türünüzü seçin",
+                    hintStyle: const TextStyle(
+                      color: Colors.deepPurple,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        borderSide: const BorderSide(
+                        color: butonRengi,
+                      ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: InputField(
-                      controller: _mediumController,
-                      title: 'Medium',
-                      value: widget.currentUser.medium,
-                    ),
-                  )
-                ],
+
+                ),
               ),
               Consumer(
                 builder: (context, ref, child) {
@@ -168,7 +154,7 @@ class _EditProfileState extends State<EditProfile> {
 
                         if (_image != null) {
                           widget.currentUser.profilePhoto = await ref
-                              .read(commonFSRepositoryProvider)
+                              .read(temaBilesenleriFSRepositoryProvider)
                               .storeFileToFirebase(
                                 "profilePhotos/${widget.currentUser.uid}",
                                 File(_image!.path),

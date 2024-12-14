@@ -23,11 +23,11 @@ class ProfileController{
       await profileRepository.signOut();
     }
 
-/*
+
   Future<void> updateProfile(UserModel model) async {
     await profileRepository.updateProfile(model);
     ref.refresh(profileControllerProvider).getUser();
   }
-*/
+
 
 }

@@ -25,4 +25,13 @@ class ProfileRepository{
         .get();
     return UserModel.fromMap(user.data()!);
   }
+
+  Future<void> updateProfile(UserModel model) async {
+    await firebaseFirestore
+        .collection("users")
+        .doc(auth.currentUser!.uid)
+        .update(
+          model.toMap(),
+        );
+  }
 }

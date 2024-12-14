@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:parkgrid_y/features/auth/views/sign_in.dart';
 import 'package:parkgrid_y/features/router/route_names.dart';
 import 'package:parkgrid_y/temaBilesenleri/paths.dart';
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:parkgrid_y/models/user_model.dart';
 import '../../profile/controller/profile_controller.dart';
-import '../../profile/repository/profile_repository.dart';
 import 'package:parkgrid_y/temaBilesenleri/sizes.dart';
-import 'package:parkgrid_y/models/user_model.dart';
 
 
 class Profile extends ConsumerWidget{
@@ -67,8 +64,6 @@ class Profile extends ConsumerWidget{
                   }, 
                   leadingAsset: cikisSvg,
                 ),
-
-
               ],
               ),
               )
