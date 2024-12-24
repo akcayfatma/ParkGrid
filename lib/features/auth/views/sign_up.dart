@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:parkgrid_y/features/auth/controller/auth_controller.dart';
-import 'package:parkgrid_y/features/auth/views/sign_up_info.dart';
 import 'package:parkgrid_y/features/router/route_names.dart';
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
-import 'package:parkgrid_y/features/router/route_names.dart';
 
-import 'sign_in.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -159,7 +156,7 @@ class _SignUpState extends State<SignUp> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
+                                const Text(
                                   "Zaten bir hesabin var mi?",
                                   style: TextStyle(
                                   color: pembis,

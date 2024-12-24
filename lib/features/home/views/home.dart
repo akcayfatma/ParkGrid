@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parkgrid_y/temaBilesenleri/paths.dart';
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
 import 'package:parkgrid_y/features/profile/views/profile.dart';
 import 'package:parkgrid_y/features/gosterge/views/gosterge.dart';
+import 'package:parkgrid_y/features/otopark/views/otopark.dart';
 
 class Home extends StatefulWidget{
   const Home({super.key});
@@ -25,6 +25,8 @@ void onTap (int index) {
 List<Widget> list=[
   const Gosterge(), 
   const Profile(),
+  const Text('Harita'), 
+  const Text('Otopark'), 
   ];
 
   @override 
@@ -39,22 +41,24 @@ List<Widget> list=[
           
       items: [
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(
-          homeSvg,
-          ),
-      
+        icon: SizedBox.shrink(),
+        //icon: SvgPicture.asset(homeSvg,),
+      //activeIcon: SvgPicture.asset(homeSvg,),
         label: "Home",
         ),
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(profilSvg,), 
+        icon: SizedBox.shrink(),
+        //icon: SvgPicture.asset(profilSvg,), 
       label: "Profil",
       ),
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(homeSvg,), 
+        icon: SizedBox.shrink(),
+       //icon: SvgPicture.asset(homeSvg,), 
       label: "Harita",
       ),
       BottomNavigationBarItem(
-        icon: SvgPicture.asset(otoparkSvg,), 
+        icon: SizedBox.shrink(),
+       // icon: SvgPicture.asset(otoparkSvg,), 
       label: "Otopark",
       ),
       

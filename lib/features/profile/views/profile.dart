@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parkgrid_y/features/router/route_names.dart';
-import 'package:parkgrid_y/temaBilesenleri/paths.dart';
+//import 'package:parkgrid_y/temaBilesenleri/paths.dart';
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:parkgrid_y/models/user_model.dart';
@@ -10,7 +10,7 @@ import 'package:parkgrid_y/temaBilesenleri/sizes.dart';
 
 
 class Profile extends ConsumerWidget{
-  const Profile({superkey});
+  const Profile({super.key, superkey});
 
   @override
   Widget build(BuildContext context, WidgetRef ref){
@@ -26,12 +26,12 @@ class Profile extends ConsumerWidget{
                 padding: scaffoldPadding,
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [ 
                       Text(
                         "Profil", 
-                        style: const TextStyle(
+                        style: TextStyle(
                         fontSize: 30, 
                         fontWeight: FontWeight.bold, 
                         color:yazi,
@@ -42,17 +42,20 @@ class Profile extends ConsumerWidget{
                       child: CircleAvatar(
                       backgroundColor: acikYazi,
                       radius: 20,
-                      backgroundImage: CashedNetworkImageProvider(
-                        userModel.profilePhoto!,
-                      ),
+
                      ),
                     )
                   ],
                 ),
                 MenuItem(
                   title: "Profil bilgilerini duzenle",
-                  onTap: () {}, 
-                  leadingAsset: duzenleSvg,
+                  onTap: () => Navigator.pushNamed(context,
+                    AppRouteNames.editProfile,
+                     arguments: {
+                              "currentUser": userModel,
+                      }),
+                  
+                  //leadingAsset: duzenleSvg,
                 ),
                 
                 MenuItem(
@@ -62,7 +65,7 @@ class Profile extends ConsumerWidget{
                    AppRouteNames.signIn,
                    );
                   }, 
-                  leadingAsset: cikisSvg,
+                 //leadingAsset: cikisSvg,
                 ),
               ],
               ),
@@ -82,14 +85,14 @@ class Profile extends ConsumerWidget{
 
 class MenuItem extends StatelessWidget {
   const MenuItem({
-    Key? key,
+    super.key,
     this.onTap,
     required this.title,
-    required this.leadingAsset,
-  }): super(key: key);
+    //required this.leadingAsset,
+  });
   final Function()? onTap;
   final String title;
-  final String leadingAsset;
+  //final String leadingAsset;
 
   @override
   Widget build(BuildContext context) {
@@ -104,12 +107,14 @@ class MenuItem extends StatelessWidget {
           ),
           elevation: 5,
           child: ListTile(
+            /*
             leading: SvgPicture.asset(
               leadingAsset,
               ),
+              */
               title: Text(
                title, 
-                style: TextStyle(
+                style: const TextStyle(
                   color: butonYazi, 
                   fontSize: 16,
                   ),

@@ -7,7 +7,7 @@ import 'package:parkgrid_y/features/auth/views/sign_in.dart';
 import 'package:parkgrid_y/features/auth/views/sign_up_info.dart';
 import 'package:parkgrid_y/features/home/views/home.dart';
 import 'package:parkgrid_y/features/profile/views/edit_profile.dart';
-
+import 'package:parkgrid_y/features/profile/views/edit_profile.dart';
 class AppRouter {
   static Route<dynamic>? generate(RouteSettings settings) {
     switch (settings.name) {
@@ -27,8 +27,6 @@ class AppRouter {
             builder: (_) => SignUpInfo(
                   email: email,
                 ));
-      
-    
 
       case AppRouteNames.editProfile:
         final arguments = settings.arguments as Map<String, dynamic>;

@@ -4,14 +4,12 @@ import 'package:parkgrid_y/features/auth/controller/auth_controller.dart';
 import 'package:parkgrid_y/features/router/route_names.dart';
 import 'package:parkgrid_y/models/user_model.dart';
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
-import 'package:parkgrid_y/features/auth/repository/auth_repository.dart';
-import '../../home/views/home.dart';
 
 class SignUpInfo extends StatefulWidget {
   const SignUpInfo({
-    Key? key,
+    super.key,
     required this.email,
-  }) : super(key: key);
+  });
   final String email;
 
   @override

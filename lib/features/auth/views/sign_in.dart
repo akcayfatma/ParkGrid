@@ -4,9 +4,6 @@ import 'package:parkgrid_y/features/auth/controller/auth_controller.dart';
 import 'package:parkgrid_y/features/router/route_names.dart';
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
 
-import '../../home/views/home.dart';
-import 'sign_up.dart';
-import 'sign_up_admin.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -82,7 +79,7 @@ class _SignInState extends State<SignIn> {
 
                           Center(
                             child: TextButton(
-                              onPressed: () {}, child: Text("Sifremi Unuttum", style:TextStyle(color:pembis),
+                              onPressed: () {}, child: const Text("Sifremi Unuttum", style:TextStyle(color:pembis),
                               ),
                             ),
                           ),
@@ -134,19 +131,10 @@ class _SignInState extends State<SignIn> {
                             child: TextButton(
                               onPressed: () => Navigator.pushNamed(context, 
                               AppRouteNames.signUp), 
-                              child: Text("Kullanici Hesabi Olustur", style:TextStyle(color:pembis),
+                              child: const Text("Kullanici Hesabi Olustur", style:TextStyle(color:pembis),
                               ),
                             ),
                           ),
-                          /*
-                          customSizedBox(),
-                          Center(
-                            child: TextButton(
-                              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_)=>const SignUpAdmin(),),), 
-                              child: Text("Admin Hesabi Olustur", style:TextStyle(color: pembis),
-                              ),
-                            ),
-                          ),*/
                         ],
                       ),
                     ),

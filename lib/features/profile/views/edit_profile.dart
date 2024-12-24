@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:parkgrid_y/temaBilesenleri/temaBilesenleri_firebase_storage.dart';
 import 'package:parkgrid_y/temaBilesenleri/sizes.dart';
 import 'package:parkgrid_y/features/profile/controller/profile_controller.dart';
-import 'package:parkgrid_y/features/profile/repository/profile_repository.dart';
 import 'package:parkgrid_y/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -40,6 +39,8 @@ List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
     _nameController.text = widget.currentUser.name;
     _surnameController.text = widget.currentUser.surname;
     _emailController.text = widget.currentUser.email;
+    _fuelTypeController.text=widget.currentUser.fuelType;
+    selectedFuelType = widget.currentUser.fuelType; 
   }
 
   @override
@@ -72,7 +73,7 @@ List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
                 child: GestureDetector(
                   onTap: () => selectImage(),
                   child: CircleAvatar(
-                    backgroundColor: butonRengi,
+                    backgroundColor: iconRenk,
                     radius: 70,
                     backgroundImage: _image != null
                         ? FileImage(File(_image!.path)) as ImageProvider
@@ -111,6 +112,7 @@ List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
 
               Padding(padding: const EdgeInsets.symmetric(vertical: 5),
                 child: DropdownButtonFormField<String>(
+                  
                   value: selectedFuelType,
                   items:fuelTypes.map((String fuel){
                     return DropdownMenuItem<String>(
@@ -127,10 +129,7 @@ List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
                 decoration: InputDecoration(
                   fillColor: acikYazi,
                     filled: true,
-                    hintText: " Yakıt türünüzü seçin",
-                    hintStyle: const TextStyle(
-                      color: Colors.deepPurple,
-                      ),
+
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(4),
                         borderSide: const BorderSide(
@@ -150,6 +149,7 @@ List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
                         widget.currentUser.name = _nameController.text;
                         widget.currentUser.surname = _surnameController.text;
                         widget.currentUser.email = _emailController.text;
+                        widget.currentUser.fuelType = selectedFuelType ?? widget.currentUser.fuelType;
 
 
                         if (_image != null) {
@@ -174,16 +174,16 @@ List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      color: acikYazi,
+                      color: butonRengi,
                       minWidth: double.infinity,
                       child: const Padding(
                         padding: EdgeInsets.symmetric(
                           vertical: 10,
                         ),
                         child: Text(
-                          "Profilini Duzenle",
+                          "Kaydet",
                           style: TextStyle(
-                            color: acikYazi,
+                            color: butonRengi,
                           ),
                         ),
                       ),
