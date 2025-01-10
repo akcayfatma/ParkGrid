@@ -7,6 +7,7 @@ class UserModel{
   String email;
   String fuelType;
   String? profilePhoto;
+  
   UserModel({
     this.uid,
     required this.name,

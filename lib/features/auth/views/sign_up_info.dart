@@ -160,15 +160,7 @@ List<String> fuelTypes = ['Elektrikli', 'Fosil Yakıt', 'Hibrit'];
                                 
                                 child: MaterialButton(
                                   onPressed: () {
-                                    /*
-                                    if (_formKey.currentState!.validate()) {
-                                    UserModel userModel = UserModel(
-                                        name: _nameController.text,
-                                        surname: _surnameController.text,
-                                        email: widget.email,
-                                        fuelType: _fuelTypeController.text);
-                                    }
-                                    */
+
                                     if (_formKey.currentState!.validate()) {
                                      UserModel userModel = UserModel(
                                         name: _nameController.text,

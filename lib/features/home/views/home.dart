@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:parkgrid_y/features/harita/controller/harita_controller.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
-import 'package:parkgrid_y/temaBilesenleri/paths.dart';
+//import 'package:parkgrid_y/temaBilesenleri/paths.dart';
 import 'package:parkgrid_y/temaBilesenleri/renkler.dart';
 import 'package:parkgrid_y/features/profile/views/profile.dart';
 import 'package:parkgrid_y/features/gosterge/views/gosterge.dart';
 import 'package:parkgrid_y/features/otopark/views/otopark.dart';
+import 'package:parkgrid_y/features/harita/views/harita.dart';
 
 class Home extends StatefulWidget{
   const Home({super.key});
@@ -25,8 +27,8 @@ void onTap (int index) {
 List<Widget> list=[
   const Gosterge(), 
   const Profile(),
-  const Text('Harita'), 
-  const Text('Otopark'), 
+  HaritaScreen(controller: HaritaController()), 
+  const Otopark(), 
   ];
 
   @override 
@@ -38,8 +40,7 @@ List<Widget> list=[
           color: iconRenk),
           currentIndex: _simdikiIndex,
           onTap: onTap,
-          
-      items: [
+        items: const [
       BottomNavigationBarItem(
         icon: SizedBox.shrink(),
         //icon: SvgPicture.asset(homeSvg,),
